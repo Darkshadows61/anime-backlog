@@ -19,7 +19,7 @@ const animeShows = {
 }
 
 //Setup PORT and where to Listen
-app.listen(PORT, ()=>{
+app.listen(process.env.PORT || PORT, ()=>{
     console.log(`Server is live on ${PORT} and ready to send the Waifus ^_^`)
 })
 
