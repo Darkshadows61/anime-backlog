@@ -50,12 +50,12 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
             })
             .then(result => {
                 console.log('Added One Like')
-                response.json('Like Added')
+                res.json('Like Added')
             })
             .catch(error => console.error(error))
         })
         app.delete('/deleteAnime', (req, res) => {
-            animeCollection.deleteOne({stageName: req.body.showName})
+            animeCollection.deleteOne({showName: req.body.showName})
             .then(result => {
                 console.log('Anime Deleted')
                 res.json('Anime Deleted')
