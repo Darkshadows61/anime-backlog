@@ -6,6 +6,11 @@ const MongoClient = require('mongodb').MongoClient
 const PORT = 8000
 require('dotenv').config()
 
+//PORT
+app.listen(process.env.PORT || PORT, (req,res)=>{
+    console.log('yes')
+})
+
 //MongoDB
 let db,
     dbConnectionStr = process.env.DB_STRING,
@@ -18,7 +23,7 @@ app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true}))
 app.use(express.json())
 
-//Setup PORT and where to Listen
+//MongoDB and CRUD
 MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
     .then(client => {
         console.log(`Server is live on ${PORT} and ready to send the Waifus ^_^`)
@@ -62,9 +67,4 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
             })
             .catch(error => console.error(error))
         })
-})
-
-
-app.listen(process.env.PORT || PORT, (req,res)=>{
-    console.log('yes')
 })
